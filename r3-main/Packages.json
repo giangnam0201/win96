@@ -1,0 +1,327 @@
+[
+    {
+        "name": "w96-wallpapers-extra",
+        "friendlyName": "Windows 96 Extra Wallpapers",
+        "description": "High quality extra wallpapers for your installation.",
+        "author": "Windows 96 Team (https://windows96.net)",
+        "category": "other",
+        "version": 1.0,
+        "feature_requirements": [],
+		"installedSize": 155648,
+		"downloadSize": 90112,
+        "min_os_version": 300000,
+        "depends": [],
+        "iconFiles": {
+            "32x32": "$REPO_PATH$/dist/w/w96-wallpapers-extra/icon32.png",
+            "16x16": "$REPO_PATH$/dist/w/w96-wallpapers-extra/icon16.png"
+        },
+        "packageRoot": "$REPO_PATH$/dist/w/w96-wallpapers-extra"
+    },
+    {
+        "name": "ms-wallpapers",
+        "friendlyName": "Microsoft wallpapers",
+        "description": "Windows 7 + 8 beta wallpapers",
+        "author": "Microsoft (https://microsoft.com)",
+        "category": "other",
+        "version": 1.0,
+        "feature_requirements": [],
+		"installedSize": 63258624,
+		"downloadSize": 62595072,
+        "min_os_version": 300000,
+        "depends": [],
+        "iconFiles": {
+            "32x32": "$REPO_PATH$/dist/m/ms-wallpapers/icon32.png",
+            "16x16": "$REPO_PATH$/dist/m/ms-wallpapers/icon16.png"
+        },
+        "packageRoot": "$REPO_PATH$/dist/m/ms-wallpapers"
+    },
+    {
+        "name": "w96-wallpapers-meta",
+        "friendlyName": "Windows 96 Wallpapers Metapackage",
+        "description": "Installs every wallpaper pack available in the Win96 extra wallpapers series.",
+        "author": "Windows 96 Team (https://windows96.net)",
+        "category": "other",
+        "version": 1.0,
+        "feature_requirements": [],
+		"installedSize": 0,
+		"downloadSize": 157,
+        "min_os_version": 300000,
+        "depends": ["w96-wallpapers-extra", "w96-wallpapers-abstract"],
+        "iconFiles": {
+            "32x32": "$REPO_PATH$/dist/w/w96-wallpapers-meta/icon32.png",
+            "16x16": "$REPO_PATH$/dist/w/w96-wallpapers-meta/icon16.png"
+        },
+        "packageRoot": "$REPO_PATH$/dist/w/w96-wallpapers-meta"
+    },
+    {
+        "name": "w96-wallpapers-abstract",
+        "friendlyName": "Windows 96 Abstract Wallpapers Pack",
+        "description": "Ultra quality abstract wallpapers for your installation.",
+        "author": "Tran1903 (https://tran1903.tech/)",
+        "category": "other",
+        "version": 1.0,
+        "feature_requirements": [],
+		"installedSize": 29184000,
+		"downloadSize": 29179904,
+        "min_os_version": 300000,
+        "depends": [],
+        "iconFiles": {
+            "32x32": "$REPO_PATH$/dist/w/w96-wallpapers-extra/icon32.png",
+            "16x16": "$REPO_PATH$/dist/w/w96-wallpapers-extra/icon16.png"
+        },
+        "packageRoot": "$REPO_PATH$/dist/w/w96-wallpapers-abstract"
+    },
+    {
+        "name": "ext-quicklaunch",
+        "friendlyName": "Shell Quick Launch Extension",
+        "description": "Adds quick launch to the taskbar (reboot required).",
+        "author": "Windows 96 Team (https://windows96.net)",
+        "category": "other",
+        "version": 1.1,
+        "feature_requirements": [],
+		"installedSize": 2275,
+		"downloadSize": 2571,
+        "min_os_version": 300000,
+        "depends": [],
+        "packageRoot": "$REPO_PATH$/dist/e/ext-quicklaunch",
+		"iconFiles": {
+            "32x32": "$REPO_PATH$/dist/e/ext-quicklaunch/icon32.png"
+        }
+    },
+    {
+        "name": "troll",
+        "friendlyName": "Troll",
+        "description": "Nice little package to troll the user.",
+        "author": "Windows 96 Team (https://windows96.net)",
+        "category": "entertainment",
+        "version": 1.0,
+        "feature_requirements": [],
+		"installedSize": 752087,
+		"downloadSize": 567475,
+        "min_os_version": 300000,
+        "depends": [],
+        "packageRoot": "$REPO_PATH$/dist/t/troll",
+		"iconFiles": {
+            "32x32": "$REPO_PATH$/dist/t/troll/icon32.png"
+        }
+    },
+	{
+        "name": "fnf",
+        "friendlyName": "Friday Night Funkin",
+        "description": "The hit game came to Windows 96!",
+        "author": "Ported by Windows 96 Team (https://windows96.net) | ninjamuffin99 (https://github.com/ninjamuffin99/Funkin)",
+        "category": "entertainment",
+        "version": 1.2,
+        "feature_requirements": ["WebAssembly"],
+		"installedSize": 20480,
+		"downloadSize": 11964,
+        "min_os_version": 300000,
+        "depends": [],
+        "packageRoot": "$REPO_PATH$/dist/f/fnf",
+		"iconFiles": {
+            "32x32": "$REPO_PATH$/dist/f/fnf/icon32.png"
+        }
+    },
+	{
+        "name": "hl-uplink",
+        "friendlyName": "Half-Life: Uplink",
+        "description": "Half-Life: Uplink (HL Demo) using Xash3d.",
+        "author": "Valve Software (https://valvesoftware.com/)",
+        "category": "entertainment",
+        "version": 1.1,
+        "feature_requirements": ["WebAssembly"],
+		"installedSize": 42986506,
+		"downloadSize": 33407304,
+        "min_os_version": 300000,
+        "depends": [],
+        "packageRoot": "$REPO_PATH$/dist/h/hl-uplink",
+		"iconFiles": {
+            "32x32": "$REPO_PATH$/dist/h/hl-uplink/icon32.png"
+        }
+    },
+    {
+        "name": "codemirror",
+        "friendlyName": "CodeMirror",
+        "description": "A lightweight code editor with support for multiple languages.",
+        "author": "Windows 96 Team (https://windows96.net) | CodeMirror (https://codemirror.net)",
+        "category": "development",
+        "version": 1.0,
+        "feature_requirements": [],
+		"installedSize": 1245255,
+		"downloadSize": 342029,
+        "min_os_version": 300000,
+        "depends": [],
+        "packageRoot": "$REPO_PATH$/dist/c/codemirror",
+		"iconFiles": {
+            "32x32": "$REPO_PATH$/dist/c/codemirror/icon32.png"
+        }
+    },
+    {
+        "name": "font-roboto",
+        "friendlyName": "Roboto Fonts",
+        "description": "The Roboto font family fonts (TTF).",
+        "author": "Google (https://fonts.google.com/specimen/Roboto)",
+        "category": "other",
+        "version": 1.0,
+        "feature_requirements": [],
+		"installedSize": 2055148,
+		"downloadSize": 1116605,
+        "min_os_version": 300000,
+        "depends": [],
+        "packageRoot": "$REPO_PATH$/dist/f/font-roboto",
+		"iconFiles": {
+            "32x32": "$REPO_PATH$/dist/f/font-roboto/icon32.png"
+        }
+    },
+    {
+        "name": "doom",
+        "friendlyName": "DOOM",
+        "description": "The classic DOS game DOOM (shareware version).",
+        "author": "Ported by Windows 96 Team (https://windows96.net) | id Software (https://www.idsoftware.com/)",
+        "category": "entertainment",
+        "version": 1.1,
+        "feature_requirements": [],
+		"installedSize": 2380475,
+		"downloadSize": 2382573,
+        "min_os_version": 300000,
+        "depends": [],
+        "packageRoot": "$REPO_PATH$/dist/d/doom",
+		"iconFiles": {
+            "32x32": "$REPO_PATH$/dist/d/doom/icon32.png"
+        }
+    },
+    {
+        "name": "win95",
+        "friendlyName": "Windows 95",
+        "description": "Lets you run Windows 95 through DOSBox.",
+        "author": "Ported by Windows 96 Team (https://windows96.net) | Microsoft (C) 1995 (https://www.microsoft.com/)",
+        "category": "other",
+        "version": 1.2,
+		"readmeFile": "$REPO_PATH$/dist/w/win95/README.html",
+        "feature_requirements": [],
+		"installedSize": 60006078,
+		"downloadSize": 59828774,
+        "min_os_version": 300000,
+        "depends": [],
+        "packageRoot": "$REPO_PATH$/dist/w/win95",
+		"iconFiles": {
+            "32x32": "$REPO_PATH$/dist/w/win95/icon32.png"
+        }
+    },
+    {
+        "name": "ext-exitprompt",
+        "friendlyName": "Exit Prompt Extension",
+        "description": "Displays a browser exit prompt when an OS reboot/exit is triggered.",
+        "author": "Windows 96 Team (https://windows96.net)",
+        "category": "other",
+        "version": 1.0,
+        "feature_requirements": [],
+        "min_os_version": 300000,
+		"installedSize": 1173,
+		"downloadSize": 1173,
+        "depends": [],
+        "packageRoot": "$REPO_PATH$/dist/e/ext-exitprompt",
+		"iconFiles": {
+            "32x32": "$REPO_PATH$/dist/e/ext-exitprompt/icon32.png"
+        }
+    },
+    {
+        "name": "3dfe",
+        "friendlyName": "3D File Explorer",
+        "description": "Browse your local files in 3D!",
+        "author": "Windows 96 Team (https://windows96.net)",
+        "category": "utilities",
+        "version": 1.0,
+        "feature_requirements": [],
+        "min_os_version": 300000,
+		"installedSize": 2822523,
+		"downloadSize": 1984096,
+        "depends": [],
+        "packageRoot": "$REPO_PATH$/dist/3/3dfe",
+		"iconFiles": {
+            "32x32": "$REPO_PATH$/dist/3/3dfe/icon32.png",
+            "16x16": "$REPO_PATH$/dist/3/3dfe/icon16.png"
+        }
+    },
+    {
+        "name": "wmbox-sample-vms",
+        "friendlyName": "WMBox Sample VMs",
+        "description": "Some sample VMs to demonstrate WMBox functionality.",
+        "author": "Windows 96 Team (https://windows96.net)",
+        "category": "utilities",
+        "version": 1.0,
+        "readmeFile": "$REPO_PATH$/dist/w/wmbox-sample-vms/README.html",
+        "feature_requirements": [],
+        "min_os_version": 300000,
+        "installedSize": 56776616,
+        "downloadSize": 54819349,
+        "depends": [],
+        "packageRoot": "$REPO_PATH$/dist/w/wmbox-sample-vms",
+        "iconFiles": {
+            "32x32": "$REPO_PATH$/dist/w/wmbox-sample-vms/icon32.png",
+            "16x16": "$REPO_PATH$/dist/w/wmbox-sample-vms/icon16.png"
+        }
+    },
+    {
+        "name": "shsw",
+        "friendlyName": "Shell Switcher CLI",
+        "description": "CLI utility to switch the current shell.",
+        "author": "Windows 96 Team (https://windows96.net)",
+        "category": "cli",
+        "version": 1.0,
+        "feature_requirements": [],
+        "min_os_version": 300000,
+        "installedSize": 1219,
+        "downloadSize": 1689,
+        "depends": [],
+        "packageRoot": "$REPO_PATH$/dist/s/shsw"
+    },
+    {
+        "name": "sysbox",
+        "friendlyName": "SysBox",
+        "description": "Simulate a Windows 96 environment (for development purposes)",
+        "author": "Windows 96 Team (https://windows96.net)",
+        "category": "development",
+        "version": 1.0,
+        "feature_requirements": [],
+        "min_os_version": 300001,
+        "installedSize": 59197,
+        "downloadSize": 53441,
+        "depends": [],
+        "packageRoot": "$REPO_PATH$/dist/s/sysbox"
+    },
+    {
+        "name": "wdt",
+        "friendlyName": "Windows 96 Development Toolchain",
+        "description": "An SDK toolchain containing Windows 96 developer tools.",
+        "author": "Windows 96 Team (https://windows96.net)",
+        "category": "development",
+        "version": 1,
+        "feature_requirements": [],
+        "min_os_version": 310000,
+        "depends": [],
+        "iconFiles": {
+            "32x32": "$REPO_PATH$/dist/w/wdt/icon32.png",
+            "16x16": "$REPO_PATH$/dist/w/wdt/icon16.png"
+        },
+        "installedSize": 3319749,
+        "downloadSize": 769749,
+        "packageRoot": "$REPO_PATH$/dist/w/wdt"
+    },
+    {
+        "name": "src-userland",
+        "friendlyName": "Windows 96 Userland Sources",
+        "description": "Contains the source code for the Win96 system apps.",
+        "author": "Windows 96 Team (https://windows96.net)",
+        "category": "development",
+        "version": 1,
+        "feature_requirements": [],
+        "min_os_version": 310000,
+        "depends": [
+            "wdt"
+        ],
+        "installedSize": 866167,
+        "downloadSize": 396046,
+        "packageRoot": "$REPO_PATH$/dist/s/src-userland"
+    }
+]

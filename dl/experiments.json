@@ -1,0 +1,19 @@
+[
+	{
+		"id": "ntxp",
+        "icon": "devices/computer",
+		"name": "Windows 96 NTXP",
+		"description": "Windows 96 themed XP VM experiment",
+		"type": "web-framed",
+		"properties": {
+			"url": "https://exp1.windows96.net",
+			"icon": "misc/logo",
+			"title": "Windows 96 NTXP",
+			"allowNewWindow": true,
+            "wndProps": {
+                "initialHeight": 620,
+                "initialWidth": 800
+            }
+		}
+	}
+]

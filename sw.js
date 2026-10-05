@@ -40,7 +40,7 @@ self.addEventListener("message", event => {
     if (event.data?.type === "w96-network" && event.source &&
         new URL(event.source.url).origin === self.location.origin) {
         NETWORK_ONLINE = event.data.online === true;
-        POLICY = event.data.policy;
+        if (typeof event.data.policy === 'string') POLICY = event.data.policy;
         return;
     }
     if (!Array.isArray(event.data))
@@ -98,13 +98,34 @@ function indexOf(url, ents) {
 self.addEventListener("fetch", event => {
     const url = new URL(event.request.url);
 
+    let mirror;
+    if (url.hostname === 'packages.windows96.net' && /^\/r3-main(?:\/|$)/.test(url.pathname)) mirror = url.pathname;
+    if (url.hostname === 'etc.windows96.net' && url.pathname === '/notron/virdefs.json') mirror = url.pathname;
+    if (url.hostname === 'windows96.net' && /^\/(system|dl)\//.test(url.pathname) && !url.searchParams.has('w96probe')) mirror = url.pathname;
+    if (url.hostname === 'cdn.windows96.net' && url.pathname === '/credits/default.png') mirror = '/system/resource/offline/credits.png';
+    if (url.hostname === 'cdn.jsdelivr.net' && url.pathname === '/jquery.ui.rotatable/1.0.1/rotate.png') mirror = '/system/libraries/extern/jquery/rotate.png';
+    if (url.hostname === 'js-dos.com' && url.pathname.startsWith('/6.22/current/')) mirror = '/system/libraries/extern/js-dos/' + url.pathname.slice('/6.22/current/'.length);
+    if (mirror) {
+        event.respondWith((async () => {
+            if (NETWORK_ONLINE && ['packages.windows96.net', 'etc.windows96.net'].includes(url.hostname)) {
+                try {
+                    const response = await fetch(event.request.clone());
+                    if (response.ok || response.type === 'opaque') return response;
+                } catch (_) { /* Use the bundled snapshot when this endpoint is down. */ }
+            }
+            return fetch(new URL(mirror + url.search, self.location.origin));
+        })());
+        return;
+    }
+
     const probe = url.origin === "https://windows96.net" &&
         url.pathname === "/system/resource/app/appletouch-icon.png" && url.searchParams.has("w96probe");
     if (url.origin !== self.location.origin && !NETWORK_ONLINE && !probe) {
-        event.respondWith(Promise.resolve(offlineResponse('Unavailable offline', {status: 503})));
+        event.respondWith(Promise.resolve(offlineResponse(JSON.stringify({error:'offline',message:'Unavailable offline'}),
+            {status: 503, headers: {'Content-Type':'application/json'}})));
         return;
     }
-    if (url.pathname.startsWith("/_/")) {
+    if (url.origin === self.location.origin && url.pathname.startsWith("/_/")) {
         event.respondWith((async function() {
             if (/^\/_\/[a-z]+$/i.test(url.pathname)) {
                 return offlineResponse("", {

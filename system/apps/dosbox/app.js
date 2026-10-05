@@ -6,7 +6,7 @@
 
     function dosLoad(zipUrl, additionalArgs = [], oncomplete = null) {
         Dos(dosContainer, { 
-            wdosboxUrl: "https://js-dos.com/6.22/current/wdosbox.js" 
+            wdosboxUrl: "/system/libraries/extern/js-dos/wdosbox.js" 
         }).ready((fs, main) => {
             fs.createFile("dosbox.conf", `
             [sdl]

@@ -126,8 +126,9 @@ class OfflineHandler(SimpleHTTPRequestHandler):
                 text = text.replace(json.dumps(POLICY), json.dumps(ONLINE_POLICY))
             if path.suffix == ".html" and "<head>" in text:
                 settings = json.dumps(config).replace("<", "\\u003c")
+                runtime = '' if 'src="/offline-runtime.js"' in text else '<script src="/offline-runtime.js"></script>'
                 text = text.replace("<head>", '<head><script>window.W96_NETWORK_CONFIG=' + settings +
-                                    ';</script><script src="/offline-runtime.js"></script>', 1)
+                                    ';</script>' + runtime, 1)
             data = text.encode("utf-8")
             self.send_response(200)
             self.send_header("Content-Type", self.guess_type(str(path)) + "; charset=utf-8")

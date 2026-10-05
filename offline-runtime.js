@@ -1,7 +1,22 @@
 /* Local desktop, with automatic access to live internet services. */
 (() => {
     "use strict";
-    const config = window.W96_NETWORK_CONFIG || {online: false, preference: "offline"};
+    if (window.W96_NETWORK_READY) return;
+    const managed = !!window.W96_NETWORK_CONFIG;
+    let preference = 'auto';
+    try { preference = localStorage.getItem('w96-network-preference') || preference; } catch (_) {}
+    const requested = new URLSearchParams(location.search).get('network');
+    if (['auto', 'online', 'offline'].includes(requested)) {
+        preference = requested;
+        if (!managed) try { localStorage.setItem('w96-network-preference', preference); } catch (_) {}
+    }
+    const defaultPolicy = "default-src 'self' data: blob:; script-src 'self' 'unsafe-inline' 'unsafe-eval' blob:; style-src 'self' 'unsafe-inline' data:; img-src 'self' data: blob:; media-src 'self' data: blob:; font-src 'self' data: blob:; connect-src 'self' data: blob:; frame-src 'self' data: blob:; worker-src 'self' blob:; object-src 'none'; form-action 'self'; base-uri 'self'";
+    const config = window.W96_NETWORK_CONFIG || {
+        online: false, preference,
+        offlinePolicy: defaultPolicy,
+        onlinePolicy: "default-src 'self' data: blob: http: https:; script-src 'self' 'unsafe-inline' 'unsafe-eval' blob: http: https:; style-src 'self' 'unsafe-inline' data: http: https:; img-src 'self' data: blob: http: https:; media-src 'self' data: blob: http: https:; font-src 'self' data: blob: http: https:; connect-src 'self' data: blob: http: https: ws: wss:; frame-src 'self' data: blob: http: https:; worker-src 'self' blob:; object-src 'none'; form-action 'self' http: https:; base-uri 'self'"
+    };
+    if (!managed && config.preference === 'online') config.online = true;
     const origin = location.origin;
     const nativeFetch = window.fetch.bind(window);
     const nativeOpen = XMLHttpRequest.prototype.open;
@@ -63,6 +78,7 @@
         finally { clearTimeout(timeout); }
     }
     async function saveMode(value) {
+        if (!managed) return;
         const response = await nativeFetch("/network-mode?mode=" + (value ? "online" : "offline"), {cache: "no-store"});
         if (!response.ok) throw new Error("Could not update connection mode");
     }
@@ -86,7 +102,7 @@
             } catch (_) { /* The local desktop can still boot without a worker. */ }
         }
         const available = await detectInternet();
-        if (available !== config.online) {
+        if (managed && available !== config.online) {
             await saveMode(available);
             location.reload();
             await new Promise(() => {});
@@ -166,7 +182,7 @@
                         }
                         publishMode();
                     } else if (!online) {
-                        if (!config.online) publishMode(true);
+                        if (managed && !config.online) publishMode(true);
                         else { await saveMode(true); online = true; publishMode(); }
                     }
                 } finally { checking = false; }

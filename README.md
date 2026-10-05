@@ -6,6 +6,11 @@ and a modern browser are required. No pip/npm install or internet connection is
 needed to run the site. Keep this entire folder together. Use the same port each
 time: the browser stores your virtual C: drive separately for each origin.
 
+The same files can be hosted at the root of a static HTTPS site, including GitHub
+Pages with a custom domain. The page loads its connection runtime directly; a
+Python backend is not needed for hosted mode. Mirrored package and antivirus URLs
+also fall back through the service worker, including requests made by older apps.
+
 This bundle includes the boot kernel, system drive, game binaries, editor workers,
 Flash emulation, DOSBox, antivirus definitions, and all 19 package archives. The
 server serves the desktop and app assets locally in both modes. At startup JavaScript
@@ -17,8 +22,9 @@ mirrored resources fall back to the local files. Analytics remain removed.
 The small **Online / Offline** indicator shows the active mode. Automatic mode also
 rechecks reachability every 30 seconds. Losing connectivity
 switches requests to local resources and closes network sockets. If internet returns
-after an offline startup, click **Online available · Reload** after saving your work
-to enable online services; returning connectivity never discards open apps silently.
+after an offline startup with the local Python launcher, click **Online available ·
+Reload** after saving your work to enable online services. Static hosting switches
+back online directly; returning connectivity never discards open apps silently.
 
 To force a mode, open `http://127.0.0.1:8192/?network=offline`, `?network=online`, or
 `?network=auto`. The preference persists in this browser. Forced offline mode makes
